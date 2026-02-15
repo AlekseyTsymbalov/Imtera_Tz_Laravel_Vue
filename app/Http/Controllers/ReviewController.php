@@ -7,7 +7,6 @@ use App\Models\YandexSetting;
 use App\Services\Yandex\MockYandexReviewsProvider;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Http;
 
 class ReviewController extends Controller
 {
@@ -48,7 +47,6 @@ class ReviewController extends Controller
         if (!$setting) {
             return redirect()->route('reviews.index');
         }
-//        dd(Http::get($setting->url)->body());
 
         $provider = new MockYandexReviewsProvider();
         $data = $provider->fetch();
