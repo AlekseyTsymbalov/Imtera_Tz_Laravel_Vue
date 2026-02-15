@@ -13,14 +13,14 @@ class YandexSettingController extends Controller
         $settings = YandexSetting::where('user_id', $request->user()->id)->first();
 
         return Inertia::render('Settings/Edit', [
-            'settings' => $settings
+            'settings' => $settings,
         ]);
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'url' => 'required|url'
+            'url' => 'required|url',
         ]);
 
         YandexSetting::updateOrCreate(
